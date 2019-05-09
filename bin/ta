@@ -2,6 +2,7 @@
 
 display_usage(){
     echo """
+    tiny-apt - making installation of applications... tiny. :) 
     Usage: $0
     -h, --help              displays help
     -i, i <package>         installs application
