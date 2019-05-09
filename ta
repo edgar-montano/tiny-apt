@@ -1,0 +1,45 @@
+#!/bin/sh
+
+display_usage(){
+    echo """
+    Usage: $0
+    -h, --help              displays help
+    -i, i <package>         installs application
+    -u, u                   updates and upgrades system
+    -q, q <package>         queries package list for application
+    -r, r <package>         removes a package
+    """
+}
+
+raise_error(){
+    local error_message="$@"
+    echo "${error_message}" 1>&2;
+}
+
+
+option=$1
+pkg=$2
+if [ -z $option ]; then
+    raise_error "Expected an option flag to be set"
+    display_usage
+else
+    case $option in
+        -h|--help)
+            display_usage
+        ;;
+        -i|i)
+            apt install $pkg
+        ;;
+        -q|q)
+            apt-cache search $2
+        ;;
+
+        -u|u)
+            apt update && apt upgrade
+        ;;
+        -r|r)
+            apt remove $pkg
+        ;;
+    esac
+fi
+
