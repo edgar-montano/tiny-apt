@@ -1,9 +1,11 @@
+```
    __  _                               __ 
   / /_(_)___  __  __      ____ _____  / /_
  / __/ / __ \/ / / /_____/ __ `/ __ \/ __/
 / /_/ / / / / /_/ /_____/ /_/ / /_/ / /_  
 \__/_/_/ /_/\__, /      \__,_/ .___/\__/  
            /____/           /_/           
+```
 # tiny-apt
 This improves the apt utility in Ubuntu based distributions by shortening the requirements to do basic operations. 
 It makes the commands you write to apt... tiny. :) 
