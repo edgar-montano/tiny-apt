@@ -9,6 +9,8 @@ display_usage(){
     -u, u                   updates and upgrades system
     -q, q <package>         queries package list for application
     -r, r <package>         removes a package
+    -ar,ar                  autoremoves all unused packages
+    -ac,ac                  autoclean old downloaded archive files 
     """
 }
 
@@ -19,7 +21,7 @@ raise_error(){
 
 
 option=$1
-pkg=$2
+shift
 if [ -z $option ]; then
     raise_error "Expected an option flag to be set"
     display_usage
@@ -29,17 +31,23 @@ else
             display_usage
         ;;
         -i|i)
-            apt install $pkg
+            apt install "$@"
         ;;
         -q|q)
-            apt-cache search $2
+            apt-cache search "$@" 
         ;;
 
         -u|u)
             apt update && apt upgrade
         ;;
         -r|r)
-            apt remove $pkg
+            apt remove "$@"
+        ;;
+        -ar|ar)
+            apt autoremove
+        ;;
+        -ac|ac)
+            apt autoclean
         ;;
     esac
 fi
